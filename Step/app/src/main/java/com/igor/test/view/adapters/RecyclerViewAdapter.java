@@ -29,13 +29,13 @@ public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewAdapte
     }
 
     public interface OnArticleClickListener {
-        void onArticleClick(View v, int position, ArticlesList categories);
+        void onArticleClick(View v, int position, ArticlesList articlesList);
     }
 
     private List<ArticlesList> mArticlesLists = new ArrayList<>();
 
-    public void setArticleList(List<ArticlesList> repoList) {
-        this.mArticlesLists = repoList;
+    public void setArticleList(List<ArticlesList> articleList) {
+        this.mArticlesLists = articleList;
         notifyDataSetChanged();
     }
 
@@ -52,6 +52,7 @@ public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewAdapte
         final ArticlesList articlesList = mArticlesLists.get(position);
         String imageLink;
         mContext = viewHolder.mImageView.getContext();
+//        Log.d("MYLOG", "getThumb = " +articlesList.getThumb().getLink());
         if (articlesList.getThumb().getLink() != null && !articlesList.getThumb().getLink().equals("")) {
             imageLink = articlesList.getThumb().getLink().replace("%dx%d", "300x300");
             Picasso.with(viewHolder.mImageView.getContext())

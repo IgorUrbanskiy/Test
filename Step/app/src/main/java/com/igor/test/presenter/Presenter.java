@@ -5,4 +5,6 @@ public interface Presenter {
     void show();
 
     void onStop();
+
+    void onDestroy();
 }

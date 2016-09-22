@@ -5,7 +5,7 @@ import android.util.Log;
 import com.igor.test.model.Model;
 import com.igor.test.model.ModelImpl;
 import com.igor.test.model.data.ArticlesList;
-import com.igor.test.view.ArticleListView;
+import com.igor.test.view.interfaces.ArticleListView;
 
 import java.util.List;
 
@@ -19,45 +19,52 @@ public class ArticleListPresenter implements Presenter {
 
     private ArticleListView mArticleListView;
     private Subscription subscription = Subscriptions.empty();
-
-    public ArticleListPresenter(ArticleListView articleListView) {
+    private String id;
+    public ArticleListPresenter(ArticleListView articleListView, String id) {
         this.mArticleListView = articleListView;
+        this.id = id;
     }
 
     @Override
     public void show() {
+        mArticleListView.showProgress();
 
         if (!subscription.isUnsubscribed()) {
             subscription.unsubscribe();
         }
 
-        subscription = model.getArticleList()
+        subscription = model.getArticleList(id)
                 .subscribe(new Observer<List<List<ArticlesList>>>() {
                     @Override
                     public void onCompleted() {
-
+                        mArticleListView.hideProgress();
                     }
 
                     @Override
                     public void onError(Throwable e) {
+                        mArticleListView.hideProgress();
                         mArticleListView.showError(e.getMessage());
-                        Log.d("MYLOG", "error " + e.getMessage());
                     }
 
                     @Override
                     public void onNext(List<List<ArticlesList>> lists) {
+                        mArticleListView.hideProgress();
                         mArticleListView.showData(lists.get(1));
                     }
-
-
                 });
     }
 
     @Override
     public void onStop() {
         if (!subscription.isUnsubscribed()) {
-            Log.d("MYLOG", "onStop ArticleListPresenter = ");
             subscription.unsubscribe();
+        }
+    }
+
+    @Override
+    public void onDestroy() {
+        if (mArticleListView != null) {
+            mArticleListView = null;
         }
     }
 }

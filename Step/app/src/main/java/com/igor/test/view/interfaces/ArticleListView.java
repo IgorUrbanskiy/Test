@@ -1,4 +1,4 @@
-package com.igor.test.view;
+package com.igor.test.view.interfaces;
 
 import com.igor.test.model.data.ArticlesList;
 
@@ -9,6 +9,10 @@ public interface ArticleListView {
     void showData(List<ArticlesList> list);
 
     void showError(String error);
+
+    void showProgress();
+
+    void hideProgress();
 
 
 }

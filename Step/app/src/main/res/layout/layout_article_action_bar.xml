@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/main_layout"
+    android:layout_width="match_parent"
+    android:layout_height="?android:attr/actionBarSize"
+    android:paddingRight="@dimen/margin_horizontal"
+    >
+
+    <ToggleButton
+        android:id="@+id/favorite"
+        android:layout_width="24dp"
+        android:layout_height="24dp"
+        android:background="@drawable/favorite_selector"
+        android:text=""
+        android:textOff=""
+        android:textOn=""
+        android:layout_centerVertical="true"
+        android:layout_alignParentRight="true"
+        android:layout_alignParentEnd="true"/>
+
+
+</RelativeLayout>

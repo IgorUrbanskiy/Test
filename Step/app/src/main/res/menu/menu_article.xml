@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+      xmlns:app="http://schemas.android.com/apk/res-auto">
+    <item android:id="@+id/favoriteMenuItem"
+          android:icon="@mipmap/icon_navbar_fav_current"
+          android:title="favorite"
+          app:showAsAction="never">
+    </item>
+    <item android:id="@+id/favoriteMenuItemActive"
+          android:icon="@mipmap/icon_navbar_fav_active"
+          android:title="favorite"
+          app:showAsAction="never">
+    </item>
+</menu>

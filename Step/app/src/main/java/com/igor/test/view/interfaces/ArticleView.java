@@ -1,4 +1,4 @@
-package com.igor.test.view;
+package com.igor.test.view.interfaces;
 
 import com.igor.test.model.data.Article;
 

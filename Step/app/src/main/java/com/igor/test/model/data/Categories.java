@@ -49,7 +49,8 @@ public class Categories implements Serializable{
     public void setSubcategories(List<Subcategory> subcategories) {
         this.subcategories = subcategories;
     }
-    class Subcategory implements Serializable {
+
+    public class Subcategory implements Serializable {
 
         @SerializedName("id")
         @Expose

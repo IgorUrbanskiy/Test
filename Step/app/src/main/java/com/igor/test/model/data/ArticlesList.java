@@ -5,68 +5,32 @@ import com.google.gson.annotations.SerializedName;
 
 import java.io.Serializable;
 
-public class ArticlesList implements Serializable{
-//    @SerializedName("id")
-//    public String id;
-//
-//    @SerializedName("internalId")
-//    public String internalId;
-//
-//    @SerializedName("update")
-//    public String update;
-//
-//    @SerializedName("date")
-//    public String date;
-//
-//    @SerializedName("ranking")
-//    public Integer ranking;
-//
-//    @SerializedName("title")
-//    public String title;
-//
-//    @SerializedName("subtitle")
-//    public String subtitle;
-//
-//    @SerializedName("link")
-//    public String link;
-//    @SerializedName("timestamp")
+public class ArticlesList implements Serializable {
+
+    public ArticlesList(String id, String title, String subtitle, Thumb thumb) {
+        this.id = id;
+        this.title = title;
+        this.subtitle = subtitle;
+        this.thumb = thumb;
+    }
+
     @Expose
     private Integer timestamp;
 
     /**
-     *
-     * @return
-     * The timestamp
+     * @return The timestamp
      */
     public Integer getTimestamp() {
         return timestamp;
     }
 
     /**
-     *
-     * @param timestamp
-     * The timestamp
+     * @param timestamp The timestamp
      */
     public void setTimestamp(Integer timestamp) {
         this.timestamp = timestamp;
     }
-    ////////////////////////////
-//    @SerializedName("timestamp")
-//    @Expose
-//    private List<TimeStamp> timestamp = new ArrayList<>();
-//
-//    public List<TimeStamp> getTimestamp() {
-//        return timestamp;
-//    }
-//
-//    public void setTimestamp(List<TimeStamp> timestamp) {
-//        this.timestamp = timestamp;
-//    }
-//
-//    class TimeStamp{
-//
 
-//    }
     @SerializedName("id")
     @Expose
     private String id;
@@ -204,7 +168,10 @@ public class ArticlesList implements Serializable{
         this.thumb = thumb;
     }
 
-    public class Thumb implements Serializable{
+    public static class Thumb implements Serializable {
+        public Thumb(String link) {
+            this.link = link;
+        }
 
         @SerializedName("link")
         @Expose

@@ -5,7 +5,7 @@ import android.util.Log;
 import com.igor.test.model.Model;
 import com.igor.test.model.ModelImpl;
 import com.igor.test.model.data.Article;
-import com.igor.test.view.ArticleView;
+import com.igor.test.view.interfaces.ArticleView;
 
 import rx.Observer;
 import rx.Subscription;
@@ -43,8 +43,6 @@ public class ArticlePresenter implements Presenter {
                     @Override
                     public void onError(Throwable e) {
                         mArticleView.showError(e.getMessage());
-                        Log.d("MYLOG", "onError = " + e.getMessage());
-
                     }
 
                     @Override
@@ -59,8 +57,14 @@ public class ArticlePresenter implements Presenter {
     @Override
     public void onStop() {
         if (!subscription.isUnsubscribed()) {
-            Log.d("MYLOG", "onStop ArticlePresenter = ");
             subscription.unsubscribe();
+        }
+    }
+
+    @Override
+    public void onDestroy() {
+        if (mArticleView != null) {
+            mArticleView = null;
         }
     }
 }

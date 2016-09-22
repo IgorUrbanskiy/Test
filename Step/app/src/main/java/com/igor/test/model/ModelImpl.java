@@ -24,8 +24,8 @@ public class ModelImpl implements Model {
     }
 
     @Override
-    public Observable<List<List<ArticlesList>>> getArticleList() {
-        return mApiCategoryInterface.getArticlesList()
+    public Observable<List<List<ArticlesList>>> getArticleList(String id) {
+        return mApiCategoryInterface.getArticlesList(id)
                 .subscribeOn(Schedulers.io())
                 .observeOn(AndroidSchedulers.mainThread());
     }

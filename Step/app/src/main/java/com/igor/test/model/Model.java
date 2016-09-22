@@ -12,7 +12,7 @@ public interface Model {
 
     Observable<List<Categories>> getCategories();
 
-    Observable<List<List<ArticlesList>>> getArticleList();
+    Observable<List<List<ArticlesList>>> getArticleList(String id);
 
     Observable<Article> getArticle(String id);
 }
